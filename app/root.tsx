@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -33,7 +34,45 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <main className="flex items-center justify-center pt-16 pb-4">
+          <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
+            <header className="fixed top-0 left-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur z-50 border-b border-gray-200 dark:border-gray-800">
+              <nav className="container mx-auto flex items-center justify-between py-4 px-6">
+                <a href="/" className="text-xl font-bold">
+                  MyApp
+                </a>
+                <ul className="flex gap-6 text-base font-medium">
+                  <li>
+                    <Link
+                      to="/about"
+                      className="hover:text-blue-600 transition-colors"
+                    >
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/contact"
+                      className="hover:text-blue-600 transition-colors"
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/dashboard"
+                      className="hover:text-blue-600 transition-colors"
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </header>
+            <div className="pt-20">{children}</div>
+          </div>
+        </main>
+
         <ScrollRestoration />
         <Scripts />
       </body>
